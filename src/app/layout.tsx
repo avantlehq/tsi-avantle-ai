@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "DPIA Agent - Automated GDPR Assessments",
-  description: "Create, manage and export GDPR-compliant Data Protection Impact Assessments with AI assistance.",
+  title: "TSI Backend Service",
+  description: "European Railway Data Conversion API - Internal service for TSI Directory platform",
 };
 
 export default function RootLayout({
@@ -10,5 +11,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return children;
+  return (
+    <html lang="en">
+      <body className="min-h-screen bg-gray-50">
+        {children}
+      </body>
+    </html>
+  );
 }

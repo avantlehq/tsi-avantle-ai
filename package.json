@@ -1,0 +1,47 @@
+{
+  "name": "tsi-avantle-ai",
+  "version": "0.1.0",
+  "description": "TSI Backend Service - European Railway Data Conversion API",
+  "main": "src/app/page.tsx",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "TSI",
+    "railway",
+    "EDIFACT", 
+    "GTFS",
+    "conversion",
+    "API",
+    "interoperability"
+  ],
+  "dependencies": {
+    "next": "16.0.1",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "typescript": "5.6.3"
+  },
+  "devDependencies": {
+    "@types/node": "22.9.0",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "eslint": "9.14.0",
+    "eslint-config-next": "16.0.1",
+    "postcss": "8.4.47",
+    "tailwindcss": "3.4.14"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/avantlehq/tsi-avantle-ai.git"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}
