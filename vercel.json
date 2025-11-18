@@ -5,9 +5,9 @@
     }
   },
   "framework": "nextjs",
-  "buildCommand": "pnpm build",
-  "devCommand": "pnpm dev",
-  "installCommand": "pnpm install --frozen-lockfile",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm ci",
   "outputDirectory": ".next",
   "functions": {
     "src/app/api/**/*.ts": {
