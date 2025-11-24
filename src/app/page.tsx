@@ -1,4 +1,3 @@
-import { CheckCircle, Database, Zap, Settings, ArrowRight, Server } from 'lucide-react'
 import Link from 'next/link'
 
 export default function BackendServicePage() {
@@ -13,7 +12,7 @@ export default function BackendServicePage() {
               <span className="text-muted-foreground text-sm font-medium">Service Online</span>
             </div>
             <div className="flex items-center gap-2 bg-card/50 backdrop-blur-sm px-4 py-2 rounded-lg avantle-border">
-              <Server className="w-3 h-3" style={{ color: 'var(--color-blue)' }} />
+              <div className="w-3 h-3 rounded" style={{ backgroundColor: 'var(--color-blue)' }}></div>
               <span className="text-muted-foreground text-sm font-medium">Internal API</span>
             </div>
           </div>
@@ -27,7 +26,7 @@ export default function BackendServicePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="https://tsi.directory" 
                   className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity avantle-glow">
-              <ArrowRight className="w-5 h-5" />
+              <span>→</span>
               Visit TSI Directory
             </Link>
           </div>
@@ -38,9 +37,9 @@ export default function BackendServicePage() {
           <div className="avantle-border bg-card/50 backdrop-blur-sm border-l-4 shadow-sm hover:shadow-md transition-shadow rounded-lg p-6"
                style={{ borderLeftColor: `rgb(74 144 226 / var(--border-opacity))` }}>
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 rounded-lg" 
+              <div className="p-2 rounded-lg flex items-center justify-center w-10 h-10" 
                    style={{ backgroundColor: `rgb(74 144 226 / var(--icon-opacity))` }}>
-                <Database className="h-6 w-6" style={{ color: 'var(--color-blue)' }} />
+                <span className="text-lg font-bold" style={{ color: 'var(--color-blue)' }}>API</span>
               </div>
               <h3 className="text-lg font-semibold text-card-foreground">API Endpoints</h3>
             </div>
@@ -67,9 +66,9 @@ export default function BackendServicePage() {
           <div className="avantle-border bg-card/50 backdrop-blur-sm border-l-4 shadow-sm hover:shadow-md transition-shadow rounded-lg p-6"
                style={{ borderLeftColor: `rgb(245 166 35 / var(--border-opacity))` }}>
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 rounded-lg" 
+              <div className="p-2 rounded-lg flex items-center justify-center w-10 h-10" 
                    style={{ backgroundColor: `rgb(245 166 35 / var(--icon-opacity))` }}>
-                <Settings className="h-6 w-6" style={{ color: 'var(--color-orange)' }} />
+                <span className="text-lg font-bold" style={{ color: 'var(--color-orange)' }}>⚙</span>
               </div>
               <h3 className="text-lg font-semibold text-card-foreground">Supported Formats</h3>
             </div>
@@ -100,9 +99,9 @@ export default function BackendServicePage() {
                style={{ borderLeftColor: `rgb(126 211 33 / var(--border-opacity))` }}>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className="p-3 rounded-lg" 
+                <div className="p-3 rounded-lg flex items-center justify-center w-12 h-12" 
                      style={{ backgroundColor: `rgb(126 211 33 / var(--icon-opacity))` }}>
-                  <CheckCircle className="h-8 w-8" style={{ color: 'var(--color-green)' }} />
+                  <span className="text-2xl" style={{ color: 'var(--color-green)' }}>✓</span>
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-card-foreground mb-1">Service Status: Online</h3>
