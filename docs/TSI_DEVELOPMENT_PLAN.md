@@ -1,337 +1,220 @@
 # TSI Platform Development Plan
 
-**Version:** 2024-11-24  
-**Status:** Foundation Complete → Module 1 Implementation Ready  
-**Author:** Ing. Rastislav Mitašík
+**As-of Date:** 2024-11-24  
+**Target:** Module 1 (Conversion Service) Implementation  
+**Dev Owner:** RM  
 
-## 🎯 Development Summary - Foundation Phase Complete
+*For architecture details, see TSI_PLATFORM_ARCHITECTURE.md  
+For business context, see TSI_MANAGEMENT_SUMMARY.md*
 
-### ✅ What We Accomplished - Foundation Phase
+## Current Status
 
-#### Phase 1: Architecture & Repository Setup ✅ COMPLETE
-- ✅ **Dual-component architecture** designed and implemented
-- ✅ **GitHub repositories** properly organized:
-  - Backend: https://github.com/avantlehq/tsi-avantle-ai (private)
-  - Frontend: https://github.com/avantlehq/tsi-directory (public)
-- ✅ **Clean project structure** with proper naming conventions
-- ✅ **CI/CD pipeline** operational with automatic deployments
+Foundation complete. Both platforms deployed on production domains with Avantle Design System. All API endpoints have mock implementations ready for real logic.
 
-#### Phase 2: Backend Service Foundation ✅ COMPLETE
-- ✅ **TSI Backend Service** built with Next.js 16
-- ✅ **API endpoints structure** implemented:
-  - POST /api/v1/convert - EDIFACT/GTFS conversion (mock ready for real logic)
-  - POST /api/v1/validate - Data validation (mock ready for real logic)
-  - GET /api/v1/status - Service monitoring (functional)
-  - POST /api/provision - Tenant provisioning (mock ready for real logic)
-- ✅ **Professional service homepage** with API documentation
-- ✅ **Avantle Design System** applied for consistent branding
-- ✅ **Build stability** achieved - no dependency issues
-
-#### Phase 3: Frontend Platform Foundation ✅ COMPLETE
-- ✅ **TSI Directory homepage** with European Railway branding
-- ✅ **5-module service architecture** UI foundation ready
-- ✅ **Responsive design** with 3-column layout
-- ✅ **Avantle Design System** consistency across platforms
-- ✅ **State management** architecture ready (Zustand)
-
-#### Phase 4: Production Deployment ✅ COMPLETE
-- ✅ **Custom domains live**:
-  - Frontend: https://tsi.directory ✓ OPERATIONAL
-  - Backend: https://tsi.avantle.ai ✓ OPERATIONAL
-- ✅ **SSL certificates** auto-provisioned and active
-- ✅ **Global CDN distribution** via Vercel Edge Network
-- ✅ **Automatic CI/CD** from GitHub main branches
-- ✅ **Professional presentation** ready for client demonstrations
-
-#### Phase 5: Documentation & Quality ✅ COMPLETE
-- ✅ **Complete documentation** (CLAUDE.md, architecture specs)
-- ✅ **Clean codebase** with TypeScript strict mode
-- ✅ **Dependency management** optimized for stable builds
-- ✅ **Professional branding** consistent across all touchpoints
+**Ready for Module 1 implementation.**
 
 ---
 
-## 🚀 Next Phase: Module 1 Implementation
+## Scope Module 1
 
-**Primary Goal**: Transform mock implementations into fully functional conversion service
+**Goal**: Working conversion service (Upload JSON → Download EDIFACT/GTFS)
 
-### Phase 1A: Backend Real Logic Implementation
+### Input/Output Specifications
 
-#### 🔧 Core Conversion Engine
-**Target Timeline: 1-2 weeks**
-
-1. **EDIFACT Conversion Implementation**
-   ```typescript
-   // Replace mock with real SKDUPD/TSDUPD generation
-   POST /api/v1/convert
-   ├── Input: JSON transport data validation
-   ├── Processing: Real EDIFACT generation logic
-   ├── Output: Valid SKDUPD/TSDUPD files
-   └── Progress: Real-time conversion status
-   ```
-
-2. **GTFS Export Implementation**
-   ```typescript
-   // Implement Google Transit Feed Specification export
-   ├── Route data processing
-   ├── Stop times generation
-   ├── Calendar and service periods
-   └── ZIP package creation
-   ```
-
-3. **File Processing Pipeline**
-   ```typescript
-   // Complete upload/download workflow
-   ├── Multipart file upload handling
-   ├── Input format validation
-   ├── Processing queue management
-   ├── Progress tracking with WebSocket/SSE
-   └── Secure file download with expiration
-   ```
-
-4. **API Enhancement**
-   ```typescript
-   // Production-ready API features
-   ├── Input validation and sanitization
-   ├── Error handling and user feedback
-   ├── Rate limiting implementation
-   ├── Basic JWT authentication
-   └── Conversion history logging
-   ```
-
-### Phase 1B: Frontend Integration Implementation
-
-#### 🎨 Conversion Module UI
-**Target Timeline: 1 week (parallel with backend)**
-
-1. **File Upload Interface**
-   ```react
-   // Complete drag-and-drop upload component
-   ├── File type validation (JSON, XML, CSV)
-   ├── File size limits and validation
-   ├── Preview of uploaded data
-   └── Upload progress indication
-   ```
-
-2. **Conversion Workspace**
-   ```react
-   // 3-column layout implementation
-   ├── Left: File management and history
-   ├── Center: Conversion progress and preview
-   ├── Right: Output files and download options
-   └── Real-time status updates
-   ```
-
-3. **Progress Tracking Interface**
-   ```react
-   // Real-time conversion monitoring
-   ├── Progress bar with percentage
-   ├── Current processing step indication
-   ├── Estimated time remaining
-   ├── Error/warning notifications
-   └── Success confirmation with download links
-   ```
-
-4. **Download & Export Interface**
-   ```react
-   // File delivery system
-   ├── Multiple format download options
-   ├── File preview before download
-   ├── Conversion summary reports
-   └── Share/send functionality
-   ```
-
-### Phase 1C: End-to-End Integration
-
-#### 🔗 Complete Workflow Testing
-**Target Timeline: 3-5 days**
-
-1. **API Connection**
-   ```typescript
-   // Frontend ↔ Backend integration
-   ├── API client configuration
-   ├── Error handling and retry logic
-   ├── Authentication token management
-   └── Real-time status synchronization
-   ```
-
-2. **User Experience Flow**
-   ```
-   User Journey: Upload → Convert → Download
-   ├── Step 1: File upload with validation
-   ├── Step 2: Format selection and options
-   ├── Step 3: Real-time conversion progress
-   ├── Step 4: Result preview and validation
-   └── Step 5: Download converted files
-   ```
-
-3. **Quality Assurance**
-   ```
-   Testing Protocol:
-   ├── Unit tests for conversion logic
-   ├── Integration tests for API endpoints
-   ├── End-to-end user workflow testing
-   ├── Performance testing with large files
-   └── Cross-browser compatibility testing
-   ```
-
----
-
-## 📋 Success Criteria for Module 1
-
-### Functional Requirements ✅ TARGETS
-- [ ] **Upload JSON transport data** → successful file processing
-- [ ] **Convert to EDIFACT** → valid SKDUPD/TSDUPD output files
-- [ ] **Convert to GTFS** → valid Google Transit feed ZIP
-- [ ] **Real-time progress** → accurate status updates during conversion
-- [ ] **Download results** → secure file delivery with proper formats
-- [ ] **Error handling** → clear user feedback for invalid inputs
-- [ ] **Basic authentication** → JWT-protected API access
-
-### Performance Requirements 🎯 TARGETS
-- [ ] **Conversion time** → <30 seconds for typical datasets
-- [ ] **API response** → <2 seconds for status queries
-- [ ] **File upload** → Support files up to 10MB
-- [ ] **Concurrent users** → Handle 10+ simultaneous conversions
-- [ ] **Uptime** → 99.9% availability during business hours
-
-### User Experience Requirements 🎨 TARGETS
-- [ ] **Intuitive workflow** → Upload→Convert→Download in <5 clicks
-- [ ] **Clear feedback** → Progress indication and error messages
-- [ ] **Professional UI** → Consistent Avantle Design System
-- [ ] **Mobile responsive** → Functional on tablets and phones
-- [ ] **Fast loading** → <3 seconds initial page load
-
----
-
-## 🛠️ Development Environment & Workflow
-
-### Current Setup ✅ OPERATIONAL
-```bash
-# Project Structure
-C:\Users\rasti\Projects\avantlehq\
-├── tsi-avantle-ai/          # Backend API service
-│   ├── src/app/api/         # API endpoints (mock implementations ready)
-│   ├── CLAUDE.md           # Development documentation
-│   └── docs/               # Architecture and planning documents
-└── tsi-directory/          # Frontend public platform
-    ├── src/app/            # Main application (UI foundation ready)
-    └── src/components/     # Reusable UI components
+**Input Schema (v1)**:
+```json
+{
+  "agency": {
+    "id": "string",
+    "name": "string", 
+    "url": "string",
+    "timezone": "Europe/Bratislava"
+  },
+  "routes": [
+    {
+      "id": "string",
+      "shortName": "string",
+      "longName": "string", 
+      "type": "1" // Bus, Rail, etc.
+    }
+  ],
+  "stops": [
+    {
+      "id": "string",
+      "name": "string",
+      "lat": "number",
+      "lon": "number"
+    }
+  ],
+  "trips": [
+    {
+      "id": "string",
+      "routeId": "string",
+      "serviceId": "string",
+      "headsign": "string"
+    }
+  ],
+  "stopTimes": [
+    {
+      "tripId": "string",
+      "stopId": "string", 
+      "arrivalTime": "HH:MM:SS",
+      "departureTime": "HH:MM:SS",
+      "stopSequence": "number"
+    }
+  ]
+}
 ```
 
-### Development Commands ✅ VERIFIED
+**Output SKDUPD/TSDUPD**: 
+- Format: Plain text EDI segments
+- Encoding: UTF-8
+- Example: `UNH+1+TSDUPD:D:04A:UN:TSI1.0'`
+
+**Output GTFS**:
+- Format: ZIP with routes.txt, trips.txt, stop_times.txt, stops.txt, calendar.txt
+- Required GTFS files only (v1 scope)
+
+### v1 Security Model
+
+**Simple API Key approach** (not full JWT):
+- Single hardcoded tenant
+- No user accounts or UI auth
+- Bearer token header validation: `Authorization: Bearer tsi_dev_key_2024`
+
+### v1 Storage Model
+
+**Files**: Local filesystem/Vercel compatible
+```
+/tmp/conversions/
+  /{jobId}/
+    /input.json
+    /output.{edi|zip}
+```
+
+**Minimal DB Model**:
+```sql
+CREATE TABLE jobs (
+  id TEXT PRIMARY KEY,
+  type TEXT, -- 'convert'
+  status TEXT, -- 'pending','processing','completed','failed'
+  input_format TEXT, -- 'json'
+  output_format TEXT, -- 'skdupd','tsdupd','gtfs'
+  created_at TIMESTAMP,
+  completed_at TIMESTAMP,
+  error_message TEXT
+);
+```
+
+## Conversion Request Flow
+
+**Step 1**: User uploads JSON via tsi.directory UI  
+**Step 2**: Frontend → `POST /api/v1/convert` (tsi.avantle.ai)
+```json
+{
+  "inputData": { ... }, // JSON schema above
+  "outputFormat": "skdupd" | "tsdupd" | "gtfs"
+}
+```
+**Step 3**: Backend validates → converts → stores temporary file  
+**Step 4**: Backend returns `{ "jobId": "uuid", "status": "processing" }`  
+**Step 5**: Frontend polls `GET /api/v1/status?jobId=uuid`  
+**Step 6**: On completion: `GET /api/v1/download?jobId=uuid`
+
+## Implementation Milestones
+
+### M1: EDIFACT Conversion Engine (Backend)
+**Owner**: Dev RM  
+**Done when**: 
+- [ ] Replace mock `/api/v1/convert` with real SKDUPD/TSDUPD generation
+- [ ] Input JSON validation against schema above
+- [ ] File storage in `/tmp/conversions/{jobId}/`
+- [ ] Status tracking in SQLite jobs table
+
+**Tasks**:
+- [ ] Implement EDIFACT writer functions (SKDUPD, TSDUPD formats)
+- [ ] Add input validation middleware
+- [ ] Create file upload/storage handlers
+- [ ] Update `/api/v1/status` to query jobs table
+
+### M2: GTFS Export + Tests  
+**Owner**: Dev RM  
+**Done when**:
+- [ ] `/api/v1/convert` supports `outputFormat: "gtfs"`
+- [ ] Generates valid GTFS ZIP (routes.txt, trips.txt, stops.txt, stop_times.txt, calendar.txt)
+- [ ] Unit tests for both EDIFACT and GTFS converters
+- [ ] Test datasets verified against GTFS validator
+
+### M3: Frontend Integration  
+**Owner**: Dev RM  
+**Done when**:
+- [ ] File upload component in Module 1 UI
+- [ ] Real-time status polling from backend
+- [ ] Download links for converted files
+- [ ] Error handling and user feedback
+- [ ] End-to-end: Upload JSON → Download EDIFACT/GTFS
+
+### M4: Demo Dataset + E2E Tests
+**Owner**: Dev RM  
+**Done when**:
+- [ ] 3 test datasets (small, medium, edge cases)
+- [ ] Automated E2E test suite
+- [ ] Performance test: 1000+ stops/trips in <30s
+- [ ] Demo ready for client presentation
+
+## Testing Strategy (Module 1)
+
+### Unit Tests
+- **Converters**: JSON → internal model → EDIFACT/GTFS
+- **Validation**: Input schema validation
+- **Storage**: File upload/download handlers
+
+### Integration Tests  
+- **API endpoints**: `/api/v1/convert` end-to-end with test datasets
+- **Status tracking**: Job lifecycle (pending → processing → completed)
+
+### Performance Tests
+- **Large dataset**: 1000+ trips/stops, target <30s conversion
+- **Concurrent**: 5+ parallel conversions
+
+### Regression Tests
+- **Golden files**: 3 test scenarios with expected EDIFACT/GTFS outputs
+- **Edge cases**: Invalid JSON, missing fields, data type errors
+
+---
+
+## Quick Dev Commands
+
 ```bash
 # Backend Development (tsi-avantle-ai/)
-npm run dev              # Start dev server (http://localhost:3000)
-npm run build           # Build for production ✅ PASSING
-npm run start           # Start production server
-npm run lint            # Run ESLint ✅ PASSING
+npm run dev              # http://localhost:3000
+npm run build           # Verify build passes
+npm run test            # Run test suite (when implemented)
 
-# Frontend Development (tsi-directory/)
-pnpm dev                # Start dev server (http://localhost:3000)
-pnpm build             # Build for production ✅ PASSING
-pnpm start             # Start production server
-pnpm lint              # Run ESLint ✅ PASSING
+# Frontend Development (tsi-directory/)  
+pnpm dev                # http://localhost:3000
+pnpm build             # Verify build passes
 
-# Deployment (Automatic)
-git push origin main    # Triggers automatic Vercel deployment
-```
-
-### API Testing Endpoints ✅ ACCESSIBLE
-```bash
-# Production API Testing
-curl -X GET "https://tsi.avantle.ai/api/v1/status?jobId=test123"
-curl -X POST "https://tsi.avantle.ai/api/v1/convert" \
-  -H "Content-Type: application/json" \
-  -d '{"inputData": {...}, "outputFormat": "SKDUPD"}'
-
-# Local Development Testing  
+# Quick API Tests (Local Dev)
 curl -X GET "http://localhost:3000/api/v1/status?jobId=test123"
 curl -X POST "http://localhost:3000/api/v1/convert" \
+  -H "Authorization: Bearer tsi_dev_key_2024" \
   -H "Content-Type: application/json" \
-  -d '{"inputData": {...}, "outputFormat": "SKDUPD"}'
+  -d '{"inputData": {"agency": {...}}, "outputFormat": "gtfs"}'
+
+# Production Deployment
+git add . && git commit -m "message" && git push origin main
 ```
 
 ---
 
-## 📅 Implementation Timeline
+## Known Risks / Open Questions
 
-### Week 1: Backend Implementation
-**Days 1-2: Conversion Logic**
-- [ ] Implement EDIFACT writers (SKDUPD/TSDUPD)
-- [ ] Implement GTFS export functionality
-- [ ] Add input validation and processing pipeline
-
-**Days 3-4: API Enhancement**
-- [ ] Replace mock responses with real conversion
-- [ ] Add file upload/download handling
-- [ ] Implement progress tracking system
-
-**Days 5-7: Testing & Optimization**
-- [ ] Unit tests for conversion functions
-- [ ] Performance optimization for large files
-- [ ] Error handling and edge cases
-
-### Week 2: Frontend Integration
-**Days 1-2: Upload Interface**
-- [ ] File upload component with drag-and-drop
-- [ ] Input validation and user feedback
-- [ ] Integration with backend upload endpoint
-
-**Days 3-4: Conversion UI**
-- [ ] Progress tracking interface
-- [ ] Real-time status updates
-- [ ] Results preview and download
-
-**Days 5-7: Polish & Testing**
-- [ ] End-to-end workflow testing
-- [ ] UI/UX refinements
-- [ ] Cross-browser compatibility
-
-### Week 3: Production Deployment
-**Days 1-2: Integration Testing**
-- [ ] Full workflow testing on production
-- [ ] Performance validation with real data
-- [ ] Security testing and validation
-
-**Days 3-5: Client Demo Preparation**
-- [ ] Demo dataset preparation
-- [ ] Documentation for client presentation
-- [ ] Final UI polish and branding
+1. **Real EDIFACT complexity**: TSI specs may have more edge cases than expected
+2. **File storage on Vercel**: May need external storage for production scale  
+3. **GTFS validation**: Need to verify outputs against Google's validator
+4. **Performance**: Large datasets might need streaming/chunked processing
 
 ---
 
-## 🎯 Post-Module 1 Roadmap
-
-### Phase 1B: Complete Service Suite (Q1 2026)
-- **Module 2**: TSI Validation Service implementation
-- **Module 3**: Registry Service with ERA databases
-- **Module 4**: Authoring & Test environment
-- **Module 5**: Search & Glossary functionality
-- **Authentication**: Complete user management system
-- **Database**: PostgreSQL integration for persistence
-
-### Phase 2: Enterprise Features (Q2 2026)
-- **Multi-language**: Full EN/DE/SK internationalization
-- **Performance**: Advanced caching and optimization
-- **Enterprise**: On-premise deployment options
-- **Integrations**: ERA systems and third-party APIs
-
-### Phase 3: AI & Advanced Features (Q3 2026)
-- **AI Mapping**: Machine learning field mapping
-- **RDF Export**: SPARQL and semantic web capabilities
-- **Analytics**: Advanced usage and performance metrics
-- **Marketplace**: Template and plugin ecosystem
-
----
-
-## ✅ Ready to Begin Module 1 Implementation
-
-**Foundation Status**: ✅ COMPLETE  
-**Infrastructure**: ✅ PRODUCTION READY  
-**Development Environment**: ✅ OPERATIONAL  
-**Documentation**: ✅ COMPREHENSIVE  
-
-**Next Critical Action**: Begin real conversion logic implementation to transform TSI platform from professional foundation into fully functional railway data conversion service.
-
-**Business Impact**: Module 1 completion enables client demonstrations, revenue generation, and market validation of the complete European railway interoperability solution.
+**Ready for M1 implementation. Start with EDIFACT converter backend.**

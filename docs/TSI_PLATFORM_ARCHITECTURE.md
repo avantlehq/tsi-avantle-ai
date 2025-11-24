@@ -246,4 +246,62 @@ POST /api/provision
 
 ---
 
-**This architecture provides a solid foundation for European railway operators while maintaining enterprise-grade security and compliance standards. The separation of public interface and internal processing enables both SaaS operation and on-premise deployment scenarios. Foundation phase is complete - ready for business-critical Module 1 development.**
+## 🔄 Data Flow Architecture
+
+### Conversion Request Flow
+```
+User Upload (tsi.directory) 
+    ↓ POST /api/v1/convert
+TSI Backend (tsi.avantle.ai)
+    ↓ Validation → Processing → Storage
+Response: jobId + status
+    ↓ Polling GET /api/v1/status
+Final: Download URL for converted file
+```
+
+### v1 Minimal DB Model
+```sql
+CREATE TABLE jobs (
+  id TEXT PRIMARY KEY,
+  tenant_id TEXT DEFAULT 'default',
+  type TEXT, -- 'convert', 'validate'
+  status TEXT, -- 'pending','processing','completed','failed'
+  input_format TEXT, -- 'json'
+  output_format TEXT, -- 'skdupd','tsdupd','gtfs'
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  completed_at TIMESTAMP,
+  error_message TEXT,
+  file_path TEXT -- /tmp/conversions/{jobId}/
+);
+
+CREATE TABLE tenants (
+  id TEXT PRIMARY KEY,
+  name TEXT NOT NULL,
+  api_key TEXT UNIQUE,
+  plan TEXT DEFAULT 'basic', -- 'basic','enterprise'
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+### v1 Security Model
+**Simple API Key (not full JWT)**:
+- Bearer token validation: `Authorization: Bearer tsi_dev_key_2024`
+- Single default tenant for v1
+- Rate limiting: 100 requests/15min per tenant
+- File storage: `/tmp/conversions/{jobId}/` (Vercel compatible)
+
+### Storage Layer
+```
+/tmp/conversions/
+  /{jobId}/
+    /input.json          # Original upload
+    /output.{edi|zip}    # Converted result
+    /metadata.json       # Job details
+```
+
+**File Retention**: 24 hours auto-cleanup (Vercel `/tmp` limitations)
+**Max File Size**: 50MB per conversion (v1 scope)
+
+---
+
+**This architecture provides enterprise-grade foundation with clear separation of concerns. The dual-component design enables both SaaS operation and future on-premise deployment. Foundation complete - ready for Module 1 implementation.**
