@@ -1,6 +1,6 @@
 {
   "name": "tsi-avantle-ai",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "TSI Backend Service - European Railway Data Conversion API",
   "main": "src/app/page.tsx",
   "scripts": {
@@ -20,7 +20,7 @@
     "interoperability"
   ],
   "dependencies": {
-    "next": "16.0.1",
+    "next": "16.0.7",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "typescript": "5.6.3"
@@ -31,7 +31,7 @@
     "@types/react-dom": "18.3.1",
     "autoprefixer": "10.4.20",
     "eslint": "9.14.0",
-    "eslint-config-next": "16.0.1",
+    "eslint-config-next": "16.0.7",
     "postcss": "8.4.47",
     "tailwindcss": "3.4.14"
   },
